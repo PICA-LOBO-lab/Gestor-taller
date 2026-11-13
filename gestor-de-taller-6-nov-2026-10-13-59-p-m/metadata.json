@@ -1,0 +1,8 @@
+{
+  "name": "Remix Dashboard de Taller Mecánico Ford",
+  "description": "Sistema de gestión visual Kanban para taller oficial Ford con control de flujo de trabajo, alertas por retraso de recambios y comunicación directa con clientes vía WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
