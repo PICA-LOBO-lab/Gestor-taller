@@ -19,14 +19,13 @@ jobs:
         with:
           node-version: 20
       - run: |
-          if [ -f "package.json" ]; then
-            npm install && npm run build
-            mkdir -p output && cp -r dist/* output/
-          else
-            cd gestor-de-taller-6-nov-2026-10-13-59-pm
-            npm install && npm run build
-            mkdir -p ../output && cp -r dist/* ../output/
-          fi
+          PKG_DIR=$(dirname $(find . -name "package.json" -not -path "*/node_modules/*" | head -n 1))
+          echo "Encontrado en: $PKG_DIR"
+          cd "$PKG_DIR"
+          npm install
+          npx vite build --base=/Gestor-taller/
+          mkdir -p "$GITHUB_WORKSPACE/output"
+          cp -r dist/* "$GITHUB_WORKSPACE/output/"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./output
